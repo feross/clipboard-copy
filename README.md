@@ -7,7 +7,7 @@
 [downloads-image]: https://img.shields.io/npm/dm/clipboard-copy.svg
 [downloads-url]: https://npmjs.org/package/clipboard-copy
 
-### Lightweight copy to clipboard for web pages
+### Lightweight copy to clipboard for the web
 
 The goal of this package is to offer simple copy-to-clipboard functionality in
 modern web browsers using the fewest bytes. To do so, this package only supports
