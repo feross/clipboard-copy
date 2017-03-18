@@ -7,7 +7,7 @@ function clipboardCopy (text) {
   div.textContent = text
   document.body.appendChild(div)
 
-  var range = document.createRange()
+  var range = new Range()
   range.selectNode(div)
   window.getSelection().addRange(range)
 
