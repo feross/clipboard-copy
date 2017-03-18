@@ -1,4 +1,3 @@
-'use strict'
 /* global Range */
 
 module.exports = clipboardCopy
