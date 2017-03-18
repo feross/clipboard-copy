@@ -11,7 +11,7 @@ function clipboardCopy (text) {
   range.selectNode(div)
   window.getSelection().addRange(range)
 
-  let successful = false
+  var successful = false
   try {
     successful = document.execCommand('copy')
   } catch (err) {}
