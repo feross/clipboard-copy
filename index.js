@@ -1,23 +1,33 @@
-/* global Range */
-
 module.exports = clipboardCopy
 
 function clipboardCopy (text) {
-  var div = document.createElement('div')
-  div.textContent = text
-  document.body.appendChild(div)
+  // A <span> contains the text to copy
+  var span = document.createElement('span')
+  span.textContent = text
+  span.style.whiteSpace = 'pre' // Preserve spaces and newlines
 
-  var range = new Range()
-  range.selectNode(div)
-  window.getSelection().addRange(range)
+  // An <iframe> isolates the <span> from the page's styles
+  var iframe = document.createElement('iframe')
+  iframe.sandbox = 'allow-same-origin'
 
-  var successful = false
+  document.body.appendChild(iframe)
+  var win = iframe.contentWindow
+  win.document.body.appendChild(span)
+
+  var selection = win.getSelection()
+  var range = win.document.createRange()
+
+  var success = false
   try {
-    successful = document.execCommand('copy')
+    selection.removeAllRanges()
+    range.selectNode(span)
+    selection.addRange(range)
+
+    success = win.document.execCommand('copy')
   } catch (err) {}
 
-  window.getSelection().removeAllRanges()
-  div.remove()
+  selection.removeAllRanges()
+  iframe.remove()
 
-  return successful
+  return success
 }

@@ -11,7 +11,11 @@
 
 The goal of this package is to offer simple copy-to-clipboard functionality in
 modern web browsers using the fewest bytes. To do so, this package only supports
-modern browsers. No fallback using Adobe Flash, no hacks. Just 25 lines of code.
+modern browsers. No fallback using Adobe Flash, no hacks. Just 30 lines of code.
+
+Unlike other implementations, text copied with `clipboard-copy` is clean and
+unstyled. Copied text will not inherit HTML/CSS styling like the page's background
+color.
 
 Works in the browser with [browserify](http://browserify.org/)!
 
