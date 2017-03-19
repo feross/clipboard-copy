@@ -7,6 +7,8 @@ function clipboardCopy (text) {
   div.textContent = text
   document.body.appendChild(div)
 
+  window.getSelection().removeAllRanges()
+
   var range = new Range()
   range.selectNode(div)
   window.getSelection().addRange(range)
@@ -16,7 +18,6 @@ function clipboardCopy (text) {
     successful = document.execCommand('copy')
   } catch (err) {}
 
-  window.getSelection().removeAllRanges()
   div.remove()
 
   return successful
