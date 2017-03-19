@@ -18,6 +18,7 @@ function clipboardCopy (text) {
     successful = document.execCommand('copy')
   } catch (err) {}
 
+  window.getSelection().removeAllRanges()
   div.remove()
 
   return successful
