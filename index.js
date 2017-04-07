@@ -15,6 +15,7 @@ function clipboardCopy (text) {
   win.document.body.appendChild(span)
 
   var selection = win.getSelection()
+  if (selection === null) selection = document.getSelection()
   var range = win.document.createRange()
 
   var success = false
