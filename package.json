@@ -32,5 +32,8 @@
   },
   "scripts": {
     "test": "standard"
+  },
+  "standard": {
+    "globals": ["define"]
   }
 }

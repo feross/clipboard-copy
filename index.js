@@ -1,13 +1,13 @@
 (function (root, factory) {
-  if (typeof define === "function" && define.amd) {
-    define([], factory);
-  } else if (typeof module === "object" && module.exports) {
-    module.exports = factory();
+  if (typeof define === 'function' && define.amd) {
+    define([], factory)
+  } else if (typeof module === 'object' && module.exports) {
+    module.exports = factory()
   } else {
-    root.clipboardCopy = factory();
+    root.clipboardCopy = factory()
   }
 })(this, function () {
-  return function clipboardCopy(text) {
+  return function clipboardCopy (text) {
     // A <span> contains the text to copy
     var span = document.createElement('span')
     span.textContent = text
@@ -46,4 +46,4 @@
 
     return success
   }
-});
+})
