@@ -34,8 +34,8 @@ function clipboardCopy (text) {
   } catch (err) {}
 
   selection.removeAllRanges()
-  span.remove()
-  iframe.remove()
+  win.document.body.removeChild(span)
+  document.body.removeChild(iframe)
 
   return success
 }
