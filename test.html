@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>clipboard-copy test</title>
+</head>
+<body>
+  <p>
+    1. Click this button: <button>Copy</button>
+  </p>
+
+  <p>
+    2. Paste into this input: <input />
+  </p>
+
+  <p>
+    3. Test status: <strong>pending</strong>
+  </p>
+
+  <script type="text/javascript">
+    window.module = {}
+  </script>
+  <script src="index.js"></script>
+  <script type="text/javascript">
+    var secret = Math.random().toFixed(10).slice(2)
+
+    function setStatus (success) {
+      document.querySelector('strong').style.color = (success ? 'green' : 'red')
+      document.querySelector('strong').textContent = (success ? 'passed' : 'failed')
+    }
+
+    document.querySelector('button').addEventListener('click', function () {
+      if (!window.module.exports(secret)) setStatus(false)
+    })
+
+    document.querySelector('input').addEventListener('input', function (ev) {
+      setStatus(ev.target.value === secret)
+    })
+  </script>
+</body>
+</html>
