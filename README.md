@@ -19,6 +19,8 @@ Unlike other implementations, text copied with `clipboard-copy` is clean and
 unstyled. Copied text will not inherit HTML/CSS styling like the page's background
 color.
 
+**Supported browsers:** Chrome, Firefox, Edge, Safari, IE11.
+
 Works in the browser with [browserify](http://browserify.org/)!
 
 ## install
