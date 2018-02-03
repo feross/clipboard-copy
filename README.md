@@ -49,6 +49,10 @@ indicates if the copy was successful.
 Note: in most browsers, copying to the clipboard is only allowed if `copy()` is
 triggered in direct response to a user gesture like a `'click'` or a `'keypress'`.
 
+### `copy.isSupported`
+
+A boolean that indicates wether copying is supported in the current web browser or not.
+
 ## comparison to alternatives
 
 - **`clipboard-copy` (this package): 542 bytes**
