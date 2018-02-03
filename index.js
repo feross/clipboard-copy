@@ -1,20 +1,25 @@
 module.exports = clipboardCopy
 
 function clipboardCopy (text) {
-  // A <span> contains the text to copy
-  var span = document.createElement('span')
+  // Put the text to copy into a <span>
+  const span = document.createElement('span')
   span.textContent = text
-  span.style.whiteSpace = 'pre' // Preserve consecutive spaces and newlines
+
+  // Preserve consecutive spaces and newlines
+  span.style.whiteSpace = 'pre'
 
   // An <iframe> isolates the <span> from the page's styles
-  var iframe = document.createElement('iframe')
+  const iframe = document.createElement('iframe')
   iframe.sandbox = 'allow-same-origin'
+
+  // Add the <iframe> to the page
   document.body.appendChild(iframe)
 
-  var win = iframe.contentWindow
+  // Add the <span> to the <iframe>
+  let win = iframe.contentWindow
   win.document.body.appendChild(span)
 
-  var selection = win.getSelection()
+  let selection = win.getSelection()
 
   // Firefox fails to get a selection from <iframe> window, so fallback
   if (!selection) {
@@ -23,12 +28,12 @@ function clipboardCopy (text) {
     document.body.appendChild(span)
   }
 
-  var range = win.document.createRange()
+  const range = win.document.createRange()
   selection.removeAllRanges()
   range.selectNode(span)
   selection.addRange(range)
 
-  var success = false
+  let success = false
   try {
     success = win.document.execCommand('copy')
   } catch (err) {}
