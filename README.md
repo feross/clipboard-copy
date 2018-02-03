@@ -52,6 +52,10 @@ triggered in direct response to a user gesture like a `'click'` or a `'keypress'
 - [`clipboard-js`](https://www.npmjs.com/package/clipboard-js): 1.83 kB
 - [`clipboard`](https://www.npmjs.com/package/clipboard): 3.19 kB
 
+## testing
+
+Testing this module is currently a manual process. Open `test.html` in your web browser and follow the short instructions. The web page will always load the latest version of the module, no bundling is necessary.
+
 ## license
 
 MIT. Copyright (c) [Feross Aboukhadijeh](http://feross.org).
