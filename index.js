@@ -1,5 +1,16 @@
 module.exports = clipboardCopy
 
+Object.defineProperty(clipboardCopy, 'isSupported', {
+  enumerable: true,
+  get: function () {
+    try {
+      return document.queryCommandSupported('copy')
+    } catch (_) {
+      return false
+    }
+  }
+})
+
 function clipboardCopy (text) {
   // Put the text to copy into a <span>
   var span = document.createElement('span')
