@@ -50,4 +50,6 @@ function clipboardCopy (text) {
   document.body.removeChild(iframe)
 
   return success
+    ? Promise.resolve()
+    : Promise.reject() // eslint-disable-line prefer-promise-reject-errors
 }
