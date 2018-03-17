@@ -1,6 +1,13 @@
 module.exports = clipboardCopy
 
 function clipboardCopy (text) {
+  // Use the Async Clipboard API when available
+  if (navigator.clipboard) {
+    return navigator.clipboard.writeText(text)
+  }
+
+  // ...Otherwise, use document.execCommand() fallback
+
   // Put the text to copy into a <span>
   var span = document.createElement('span')
   span.textContent = text
