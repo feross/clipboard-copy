@@ -50,6 +50,8 @@ function clipboardCopy (text) {
   win.document.body.removeChild(span)
   document.body.removeChild(iframe)
 
+  // The Async Clipboard API returns a promise that may reject with `undefined` so we
+  // match that here for consistency.
   return success
     ? Promise.resolve()
     : Promise.reject() // eslint-disable-line prefer-promise-reject-errors
