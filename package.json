@@ -1,7 +1,7 @@
 {
   "name": "clipboard-copy",
   "description": "Lightweight copy to clipboard for the web",
-  "version": "1.4.2",
+  "version": "2.0.0",
   "author": {
     "name": "Feross Aboukhadijeh",
     "email": "feross@feross.org",
