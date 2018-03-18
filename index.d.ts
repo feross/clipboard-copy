@@ -1,2 +1,2 @@
-declare function clipboardCopy (text: string): Promise
+declare function clipboardCopy (text: string): Promise<void>
 export = clipboardCopy
