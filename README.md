@@ -51,9 +51,9 @@ triggered in direct response to a user gesture like a `'click'` or a `'keypress'
 
 ## comparison to alternatives
 
-- **`clipboard-copy` (this package): 542 bytes**
-- [`clipboard-js`](https://www.npmjs.com/package/clipboard-js): 1.83 kB
-- [`clipboard`](https://www.npmjs.com/package/clipboard): 3.19 kB
+- **`clipboard-copy` (this package): 598 bytes**
+- [`clipboard-js`](https://www.npmjs.com/package/clipboard-js): 1.91 kB
+- [`clipboard`](https://www.npmjs.com/package/clipboard): 10.66 kB
 
 ## testing
 

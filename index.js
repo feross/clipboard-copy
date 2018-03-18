@@ -1,6 +1,13 @@
 module.exports = clipboardCopy
 
 function clipboardCopy (text) {
+  // Use the Async Clipboard API when available
+  if (navigator.clipboard) {
+    return navigator.clipboard.writeText(text)
+  }
+
+  // ...Otherwise, use document.execCommand() fallback
+
   // Put the text to copy into a <span>
   var span = document.createElement('span')
   span.textContent = text
@@ -14,14 +21,15 @@ function clipboardCopy (text) {
 
   // Add the <iframe> to the page
   document.body.appendChild(iframe)
+  var win = iframe.contentWindow
 
   // Add the <span> to the <iframe>
-  var win = iframe.contentWindow
   win.document.body.appendChild(span)
 
+  // Get a Selection object representing the range of text selected by the user
   var selection = win.getSelection()
 
-  // Firefox fails to get a selection from <iframe> window, so fallback
+  // Fallback for Firefox which fails to get a selection from an <iframe>
   if (!selection) {
     win = window
     selection = win.getSelection()
@@ -42,5 +50,9 @@ function clipboardCopy (text) {
   win.document.body.removeChild(span)
   document.body.removeChild(iframe)
 
+  // The Async Clipboard API returns a promise that may reject with `undefined` so we
+  // match that here for consistency.
   return success
+    ? Promise.resolve()
+    : Promise.reject() // eslint-disable-line prefer-promise-reject-errors
 }
