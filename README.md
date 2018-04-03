@@ -41,10 +41,9 @@ button.addEventListener('click', function () {
 
 ## API
 
-### `success = copy(text)`
+### `successPromise = copy(text)`
 
-Copy the given text to the user's clipboard. Returns `success`, a boolean which
-indicates if the copy was successful.
+Copy the given text to the user's clipboard. Returns `success`, a promise that resolves if the copy was successful and rejects if the copy failed.
 
 Note: in most browsers, copying to the clipboard is only allowed if `copy()` is
 triggered in direct response to a user gesture like a `'click'` or a `'keypress'`.
