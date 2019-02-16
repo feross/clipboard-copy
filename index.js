@@ -29,8 +29,8 @@ function clipboardCopy (text) {
   // Get a Selection object representing the range of text selected by the user
   var selection = win.getSelection()
 
-  // Fallback for Firefox which fails to get a selection from an <iframe>
-  if (!selection) {
+  // Fallback when iframe's window can not access functions <iframe>
+  if (!win.clipboardCopy) {
     win = window
     selection = win.getSelection()
     document.body.appendChild(span)
