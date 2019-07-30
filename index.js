@@ -1,10 +1,14 @@
+/* global DOMException */
+
 module.exports = clipboardCopy
 
 function clipboardCopy (text) {
   // Use the Async Clipboard API when available. Requires a secure browing
   // context (i.e. HTTPS)
   if (navigator.clipboard) {
-    return navigator.clipboard.writeText(text)
+    return navigator.clipboard.writeText(text).catch(function (err) {
+      throw (err !== undefined ? err : new DOMException('The request is not allowed', 'NotAllowedError'))
+    })
   }
 
   // ...Otherwise, use document.execCommand() fallback
@@ -38,9 +42,7 @@ function clipboardCopy (text) {
   selection.removeAllRanges()
   window.document.body.removeChild(span)
 
-  // The Async Clipboard API returns a promise that may reject with `undefined`
-  // so we match that here for consistency.
   return success
     ? Promise.resolve()
-    : Promise.reject() // eslint-disable-line prefer-promise-reject-errors
+    : Promise.reject(new DOMException('The request is not allowed', 'NotAllowedError'))
 }
