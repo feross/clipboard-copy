@@ -3,7 +3,7 @@
 module.exports = clipboardCopy
 
 function clipboardCopy (text) {
-  // Use the Async Clipboard API when available. Requires a secure browing
+  // Use the Async Clipboard API when available. Requires a secure browsing
   // context (i.e. HTTPS)
   if (navigator.clipboard) {
     return navigator.clipboard.writeText(text).catch(function (err) {
