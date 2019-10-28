@@ -43,7 +43,7 @@ function copyViaClipboardApi (text) {
   // context (i.e. HTTPS)
   return navigator.clipboard
     ? navigator.clipboard.writeText(text)
-    : Promise.reject()
+    : Promise.reject() // eslint-disable-line prefer-promise-reject-errors
 }
 
 function clipboardCopy (text) {
