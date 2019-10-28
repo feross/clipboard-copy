@@ -2,18 +2,8 @@
 
 module.exports = clipboardCopy
 
-function clipboardCopy (text) {
-  // Use the Async Clipboard API when available. Requires a secure browsing
-  // context (i.e. HTTPS)
-  if (navigator.clipboard) {
-    return navigator.clipboard.writeText(text).catch(function (err) {
-      throw (err !== undefined ? err : new DOMException('The request is not allowed', 'NotAllowedError'))
-    })
-  }
-
-  // ...Otherwise, use document.execCommand() fallback
-
-  // Put the text to copy into a <span>
+function copyViaExecCommand (text) {
+// Put the text to copy into a <span>
   var span = document.createElement('span')
   span.textContent = text
 
@@ -30,12 +20,13 @@ function clipboardCopy (text) {
   range.selectNode(span)
   selection.addRange(range)
 
-  // Copy text to the clipboard
   var success = false
+  var err
+  // Copy text to the clipboard
   try {
     success = window.document.execCommand('copy')
-  } catch (err) {
-    console.log('error', err)
+  } catch (e) {
+    err = e
   }
 
   // Cleanup
@@ -44,5 +35,28 @@ function clipboardCopy (text) {
 
   return success
     ? Promise.resolve()
-    : Promise.reject(new DOMException('The request is not allowed', 'NotAllowedError'))
+    : Promise.reject(err)
+}
+
+function copyViaClipboardApi (text) {
+  // Use the Async Clipboard API when available. Requires a secure browsing
+  // context (i.e. HTTPS)
+  return navigator.clipboard
+    ? navigator.clipboard.writeText(text)
+    : Promise.reject()
+}
+
+function clipboardCopy (text) {
+  var clipboardApiError
+  // Use the Async Clipboard API when available. Requires a secure browsing
+  // context (i.e. HTTPS)
+  return copyViaClipboardApi(text)
+    .catch(function (err) {
+      // fallback to document.execCommand() if it Clipboard API or not available
+      clipboardApiError = err
+      return copyViaExecCommand(text)
+    })
+    .catch(function (err) {
+      throw err || clipboardApiError || new DOMException('The request is not allowed', 'NotAllowedError')
+    })
 }
