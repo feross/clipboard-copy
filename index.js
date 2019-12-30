@@ -1,8 +1,6 @@
 /* global DOMException */
 
-module.exports = clipboardCopy
-
-function clipboardCopy (text) {
+export default function clipboardCopy (text) {
   // Use the Async Clipboard API when available. Requires a secure browsing
   // context (i.e. HTTPS)
   if (navigator.clipboard) {
@@ -14,7 +12,7 @@ function clipboardCopy (text) {
   // ...Otherwise, use document.execCommand() fallback
 
   // Put the text to copy into a <span>
-  var span = document.createElement('span')
+  const span = document.createElement('span')
   span.textContent = text
 
   // Preserve consecutive spaces and newlines
@@ -24,14 +22,14 @@ function clipboardCopy (text) {
   document.body.appendChild(span)
 
   // Make a selection object representing the range of text selected by the user
-  var selection = window.getSelection()
-  var range = window.document.createRange()
+  const selection = window.getSelection()
+  const range = window.document.createRange()
   selection.removeAllRanges()
   range.selectNode(span)
   selection.addRange(range)
 
   // Copy text to the clipboard
-  var success = false
+  let success = false
   try {
     success = window.document.execCommand('copy')
   } catch (err) {

@@ -11,6 +11,7 @@
     "url": "https://github.com/feross/clipboard-copy/issues"
   },
   "devDependencies": {
+    "microbundle": "^0.11.0",
     "standard": "*"
   },
   "homepage": "https://github.com/feross/clipboard-copy",
@@ -25,12 +26,17 @@
     "simple"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "source": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "unpkg":  "dist/index.umd.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/feross/clipboard-copy.git"
   },
   "scripts": {
+    "build": "microbundle",
+    "watch": "microbundle watch",
     "test": "standard"
   }
 }
