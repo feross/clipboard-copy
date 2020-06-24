@@ -1,4 +1,6 @@
-# clipboard-copy [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url] [![javascript style guide][standard-image]][standard-url]
+# clipboard-copy 
+
+[![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url] [![javascript style guide][standard-image]][standard-url] [![minzip size](https://badgen.net/bundlephobia/minzip/clipboard-copy)](https://badgen.net/bundlephobia/minzip/clipboard-copy)
 
 [travis-image]: https://img.shields.io/travis/feross/clipboard-copy/master.svg
 [travis-url]: https://travis-ci.org/feross/clipboard-copy
@@ -50,9 +52,9 @@ triggered in direct response to a user gesture like a `'click'` or a `'keypress'
 
 ## comparison to alternatives
 
-- **`clipboard-copy` (this package): [399 B gzipped](https://bundlephobia.com/result?p=clipboard-copy)**
-- [`clipboard-js`](https://www.npmjs.com/package/clipboard-js): [1.7 kB gzipped](https://bundlephobia.com/result?p=clipboard-js)
-- [`clipboard`](https://www.npmjs.com/package/clipboard): [3.1 kB gzipped](https://bundlephobia.com/result?p=clipboard)
+- **`clipboard-copy` (this package): [![minzip size](https://badgen.net/bundlephobia/minzip/clipboard-copy)](https://badgen.net/bundlephobia/minzip/clipboard-copy)**
+- [`clipboard-js`](https://www.npmjs.com/package/clipboard-js): [![minzip size](https://badgen.net/bundlephobia/minzip/clipboard-js)](https://badgen.net/bundlephobia/minzip/clipboard-js)
+- [`clipboard`](https://www.npmjs.com/package/clipboard): [![minzip size](https://badgen.net/bundlephobia/minzip/clipboard)](https://badgen.net/bundlephobia/minzip/clipboard)
 
 ## testing
 
