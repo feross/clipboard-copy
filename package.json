@@ -32,5 +32,8 @@
   },
   "scripts": {
     "test": "standard"
+  },
+  "engines": {
+    "node": ">=8.10.0"
   }
 }
