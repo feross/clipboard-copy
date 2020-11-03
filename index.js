@@ -19,6 +19,8 @@ function clipboardCopy (text) {
 
   // Preserve consecutive spaces and newlines
   span.style.whiteSpace = 'pre'
+  span.style.webkitUserSelect = 'auto'
+  span.style.userSelect = 'all'
 
   // Add the <span> to the page
   document.body.appendChild(span)
