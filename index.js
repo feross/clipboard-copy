@@ -1,3 +1,4 @@
+/*! clipboard-copy. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 /* global DOMException */
 
 module.exports = clipboardCopy
