@@ -52,7 +52,7 @@ triggered in direct response to a user gesture like a `'click'` or a `'keypress'
 
 ## comparison to alternatives
 
-- **`clipboard-copy` (this package): [524 B gzipped](https://bundlephobia.com/result?p=clipboard-copy)**
+- **`clipboard-copy` (this package): [508 B gzipped](https://bundlephobia.com/result?p=clipboard-copy)**
 - [`clipboard-js`](https://www.npmjs.com/package/clipboard-js): [1.7 kB gzipped](https://bundlephobia.com/result?p=clipboard-js)
 - [`clipboard`](https://www.npmjs.com/package/clipboard): [3.2 kB gzipped](https://bundlephobia.com/result?p=clipboard)
 
