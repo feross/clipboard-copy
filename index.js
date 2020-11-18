@@ -13,7 +13,7 @@ async function copyClipboardApi (text) {
   if (!navigator.clipboard) {
     throw makeError()
   }
-  await navigator.clipboard.writeText(text)
+  return navigator.clipboard.writeText(text)
 }
 
 async function copyExecCommand (text) {
@@ -40,12 +40,13 @@ async function copyExecCommand (text) {
   let success = false
   try {
     success = window.document.execCommand('copy')
-    if (!success) throw makeError()
   } finally {
     // Cleanup
     selection.removeAllRanges()
     window.document.body.removeChild(span)
   }
+
+  if (!success) throw makeError()
 }
 
 async function clipboardCopy (text) {
@@ -59,6 +60,4 @@ async function clipboardCopy (text) {
       throw (err2 || err || makeError())
     }
   }
-
-  return Promise.resolve()
 }
