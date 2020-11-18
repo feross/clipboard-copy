@@ -3,19 +3,22 @@
 
 module.exports = clipboardCopy
 
-function clipboardCopy (text) {
+function makeError () {
+  return new DOMException('The request is not allowed', 'NotAllowedError')
+}
+
+async function copyClipboardApi (text) {
   // Use the Async Clipboard API when available. Requires a secure browsing
   // context (i.e. HTTPS)
-  if (navigator.clipboard) {
-    return navigator.clipboard.writeText(text).catch(function (err) {
-      throw (err !== undefined ? err : new DOMException('The request is not allowed', 'NotAllowedError'))
-    })
+  if (!navigator.clipboard) {
+    throw makeError()
   }
+  await navigator.clipboard.writeText(text)
+}
 
-  // ...Otherwise, use document.execCommand() fallback
-
+async function copyExecCommand (text) {
   // Put the text to copy into a <span>
-  var span = document.createElement('span')
+  const span = document.createElement('span')
   span.textContent = text
 
   // Preserve consecutive spaces and newlines
@@ -27,25 +30,35 @@ function clipboardCopy (text) {
   document.body.appendChild(span)
 
   // Make a selection object representing the range of text selected by the user
-  var selection = window.getSelection()
-  var range = window.document.createRange()
+  const selection = window.getSelection()
+  const range = window.document.createRange()
   selection.removeAllRanges()
   range.selectNode(span)
   selection.addRange(range)
 
   // Copy text to the clipboard
-  var success = false
+  let success = false
   try {
     success = window.document.execCommand('copy')
+    if (!success) throw makeError()
+  } finally {
+    // Cleanup
+    selection.removeAllRanges()
+    window.document.body.removeChild(span)
+  }
+}
+
+async function clipboardCopy (text) {
+  try {
+    await copyClipboardApi(text)
   } catch (err) {
-    console.log('error', err)
+    // ...Otherwise, use document.execCommand() fallback
+    try {
+      await copyExecCommand(text)
+    } catch (err2) {
+      throw (err2 || err || makeError())
+    }
   }
 
-  // Cleanup
-  selection.removeAllRanges()
-  window.document.body.removeChild(span)
-
-  return success
-    ? Promise.resolve()
-    : Promise.reject(new DOMException('The request is not allowed', 'NotAllowedError'))
+  return Promise.resolve()
 }

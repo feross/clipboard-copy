@@ -21,7 +21,7 @@ Unlike other implementations, text copied with `clipboard-copy` is clean and
 unstyled. Copied text will not inherit HTML/CSS styling like the page's background
 color.
 
-**Supported browsers:** Chrome, Firefox, Edge, Safari, IE11.
+**Supported browsers:** Chrome, Firefox, Edge, Safari.
 
 Works in the browser with [browserify](http://browserify.org/)!
 
@@ -45,7 +45,7 @@ button.addEventListener('click', function () {
 
 ### `successPromise = copy(text)`
 
-Copy the given text to the user's clipboard. Returns `success`, a promise that resolves if the copy was successful and rejects if the copy failed.
+Copy the given text to the user's clipboard. Returns `successPromise`, a promise that resolves if the copy was successful and rejects if the copy failed.
 
 Note: in most browsers, copying to the clipboard is only allowed if `copy()` is
 triggered in direct response to a user gesture like a `'click'` or a `'keypress'`.
