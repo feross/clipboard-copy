@@ -11,6 +11,7 @@
     "url": "https://github.com/feross/clipboard-copy/issues"
   },
   "devDependencies": {
+    "ecstatic": "^4.1.4",
     "standard": "*"
   },
   "homepage": "https://github.com/feross/clipboard-copy",
@@ -31,7 +32,8 @@
     "url": "git://github.com/feross/clipboard-copy.git"
   },
   "scripts": {
-    "test": "standard"
+    "test": "standard",
+    "test-browser-local": "ecstatic -p 4000 ."
   },
   "funding": [
     {
