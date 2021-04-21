@@ -17,11 +17,9 @@
     3. Test status: <strong>pending</strong>
   </p>
 
-  <script type="text/javascript">
-    window.module = {}
-  </script>
-  <script src="index.js"></script>
-  <script type="text/javascript">
+  <script type="module">
+    import copy from './index.js';
+
     var secret = Math.random().toFixed(10).slice(2)
 
     function setStatus (success) {
@@ -30,7 +28,7 @@
     }
 
     document.querySelector('button').addEventListener('click', function () {
-      if (!window.module.exports(secret)) setStatus(false)
+      if (!copy(secret)) setStatus(false)
     })
 
     document.querySelector('input').addEventListener('input', function (ev) {
