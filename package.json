@@ -26,7 +26,8 @@
     "simple"
   ],
   "license": "MIT",
-  "main": "index.js",
+  "type": "module",
+  "module": "index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/feross/clipboard-copy.git"

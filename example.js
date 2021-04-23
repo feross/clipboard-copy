@@ -1,4 +1,4 @@
-const copy = require('./')
+import copy from './'
 
 document.body.style.backgroundColor = 'red'
 

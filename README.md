@@ -23,7 +23,7 @@ color.
 
 **Supported browsers:** Chrome, Firefox, Edge, Safari.
 
-Works in the browser with [browserify](http://browserify.org/)!
+Works in the browser as an ES module!
 
 ## install
 
@@ -34,7 +34,7 @@ npm install clipboard-copy
 ## usage
 
 ```js
-const copy = require('clipboard-copy')
+import copy from 'clipboard-copy'
 
 button.addEventListener('click', function () {
   copy('This is some cool text')
@@ -58,7 +58,7 @@ triggered in direct response to a user gesture like a `'click'` or a `'keypress'
 
 ## testing
 
-Testing this module is currently a manual process. Open `test.html` in your web browser and follow the short instructions. The web page will always load the latest version of the module, no bundling is necessary.
+Testing this module is currently a manual process. Run `npx http-server`, open `test.html` in your web browser, and follow the short instructions. The web page will always load the latest version of the module, no bundling is necessary.
 
 ## license
 

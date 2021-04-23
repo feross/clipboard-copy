@@ -1,8 +1,6 @@
 /*! clipboard-copy. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 /* global DOMException */
 
-module.exports = clipboardCopy
-
 function makeError () {
   return new DOMException('The request is not allowed', 'NotAllowedError')
 }
@@ -49,7 +47,7 @@ async function copyExecCommand (text) {
   if (!success) throw makeError()
 }
 
-async function clipboardCopy (text) {
+export default async function clipboardCopy (text) {
   try {
     await copyClipboardApi(text)
   } catch (err) {
