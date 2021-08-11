@@ -37,16 +37,13 @@ async function copyExecCommand (text) {
   selection.addRange(range)
 
   // Copy text to the clipboard
-  let success = false
   try {
-    success = window.document.execCommand('copy')
+    if (!window.document.execCommand('copy')) throw makeError()
   } finally {
     // Cleanup
     selection.removeAllRanges()
     window.document.body.removeChild(span)
   }
-
-  if (!success) throw makeError()
 }
 
 async function clipboardCopy (text) {
