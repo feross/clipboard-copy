@@ -32,7 +32,7 @@
     "url": "git://github.com/feross/clipboard-copy.git"
   },
   "scripts": {
-    "test": "standard",
+    "test": "standard && node test.js",
     "test-browser-local": "ecstatic -p 4000 ."
   },
   "funding": [

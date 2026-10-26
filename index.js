@@ -17,6 +17,9 @@ async function copyClipboardApi (text) {
 }
 
 async function copyExecCommand (text) {
+  const selection = window.getSelection()
+  if (!selection) throw makeError()
+
   // Put the text to copy into a <span>
   const span = document.createElement('span')
   span.textContent = text
@@ -30,7 +33,6 @@ async function copyExecCommand (text) {
   document.body.appendChild(span)
 
   // Make a selection object representing the range of text selected by the user
-  const selection = window.getSelection()
   const range = window.document.createRange()
   selection.removeAllRanges()
   range.selectNode(span)
